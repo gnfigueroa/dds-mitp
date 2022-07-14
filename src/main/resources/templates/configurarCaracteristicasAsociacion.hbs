@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Configurar Características de Asociación</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown animated background-header" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12 text-center">
+                    <h2 class="mt-5 mb-4 PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET">
+                        Configuración de las Características de la Asociación
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <h6 class="PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET mt-4 mb-1 TXT-IZQ">
+                    Tamaño de las Fotos de las Mascotas:
+                </h6>
+                <div class="col">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text LBL" id="basic-addon3">Ancho</span>
+                        <input type="text" class=" text-end form-control TXTBOX" aria-describedby="inputGroup-sizing-sm" value="{{config.anchoFoto}}">
+                        <span class="input-group-text LBL" style="background-color: white">píxeles</span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text LBL" id="basic-addon3">Alto</span>
+                        <input type="text" class="form-control text-end TXTBOX" aria-describedby="inputGroup-sizing-sm" value="{{config.altoFoto}}">
+                        <span class="input-group-text LBL" style="background-color: white">píxeles</span>
+                    </div>
+                </div>
+
+
+                <h6 class="PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET mt-4 mb-1 TXT-IZQ">
+                    Preguntas Opcionales sobre las Mascotas
+                </h6>
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <form onsubmit="event.preventDefault();preguntaOpcional_onFormSubmit();" autocomplete="off">
+                                        <div>
+                                            <label class="small LBL HELVETICANEUE-REGULAR LETRAS-INDIGO">
+                                                Pregunta:
+                                            </label>
+                                            <input class="small TXTBOX" type="text" name="preguntaOpcional" id="preguntaOpcional">
+                                            <label class="small validation-error LBL HELVETICANEUE-REGULAR LETRAS-INDIGO" id="preguntaOpcional_ValidationError">
+                                                *
+                                            </label>
+                                        </div>
+                                        <div class="form-action-buttons">
+                                            <input class="small btn-sm btn-primary BTN-AZULITO HELVETICANEUE-REGULAR mt-2" type="submit" value="Guardar">
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="table-responsive">
+                                        <table class="table small table-hover list" id="preguntaOpcional_List">
+                                            <thead>
+                                                <tr class="table-secondary TABLA">
+                                                    <th>Pregunta Opcional</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each preguntas}}
+                                                <tr>
+                                                    <td class="HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">{{this}}</td>
+                                                    <td>
+                                                        <a onClick="preguntaOpcional_onEdit(this)">
+                                                            ✏️
+                                                        </a>
+                                                        <a onClick="preguntaOpcional_onDelete(this)">
+                                                            🗑️
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h6 class="PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET mt-4 mb-1 TXT-IZQ">
+                    Keys de las Mascotas
+                </h6>
+                <div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <form onsubmit="event.preventDefault();key_onFormSubmit();" autocomplete="off">
+                                        <div>
+                                            <label class="small LBL HELVETICANEUE-REGULAR LETRAS-INDIGO">
+                                                Key:
+                                            </label>
+                                            <input class="small TXTBOX" type="text" name="key" id="key">
+                                            <label class="small validation-error LBL HELVETICANEUE-REGULAR LETRAS-INDIGO" id="key_ValidationError">
+                                                *
+                                            </label>
+                                        </div>
+                                        <div class="form-action-buttons">
+                                            <input class="small btn-sm btn-primary BTN-AZULITO HELVETICANEUE-REGULAR mt-2" type="submit" value="Guardar">
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="table-responsive">
+                                        <table class="table small table-hover list" id="key_List">
+                                            <thead>
+                                                <tr class="table-secondary TABLA">
+                                                    <th>Key</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each preguntasMascotas}}
+                                                <tr class="table-secondary TABLA">
+                                                    <td>{{this}}</td>
+                                                    <td>
+                                                        <a onClick="key_onEdit(this)">
+                                                            ✏️
+                                                        </a>
+                                                        <a onClick="key_onDelete(this)">
+                                                            🗑️
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="envioData" method="post" action="/configurarCaracteristicasAsociacion">
+                    <div class="d-grid mt-4">
+                        <input type="text" class="form-control text-end" aria-describedby="inputGroup-sizing-sm" name="key1" id="key1" style="display:none">
+                        <input type="text" class="form-control text-end" aria-describedby="inputGroup-sizing-sm" name="key2" id="key2" style="display:none">
+                        <button type="button" onclick="magia();" class="btn btn-secondary BTN-AZULITO">
+                            Verificar cambios
+                        </button>
+                        <button type="button submit" class="btn mt-2 btn-success BTN-VIOLETITA">
+                            Guardar cambios
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <!--
+        <div class="card">
+            <div class="card-header text-center">
+                CONFIGURACIÓN DE CARACTERÍSTICAS DE UNA ASOCIACIÓN
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <label class="mt-3 mb-1">
+                            Tamaño de las Fotos de las Mascotas
+                        </label>
+                        <div class="col">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text" id="basic-addon3">Ancho</span>
+                                <input type="text" class=" text-end form-control" aria-describedby="inputGroup-sizing-sm" value="{{config.anchoFoto}}">
+                                <span class="input-group-text" style="background-color: white">píxeles</span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text" id="basic-addon3">Alto</span>
+                                <input type="text" class="form-control text-end" aria-describedby="inputGroup-sizing-sm" value="{{config.altoFoto}}">
+                                <span class="input-group-text" style="background-color: white">píxeles</span>
+                            </div>
+                        </div>
+
+                        <label class="mt-3 mb-1">
+                            Preguntas Opcionales sobre las Mascotas
+                        </label>
+                        <div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-sm-6">
+                                            <form onsubmit="event.preventDefault();preguntaOpcional_onFormSubmit();" autocomplete="off">
+                                                <div>
+                                                    <label class="small">
+                                                        Pregunta:
+                                                    </label>
+                                                    <input class="small" type="text" name="preguntaOpcional" id="preguntaOpcional">
+                                                    <label class="small validation-error" id="preguntaOpcional_ValidationError">
+                                                        *
+                                                    </label>
+                                                </div>
+                                                <div class="form-action-buttons">
+                                                    <input class="small" type="submit" value="Guardar">
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="table-responsive">
+                                                <table class="table small table-hover list" id="preguntaOpcional_List">
+                                                    <thead>
+                                                        <tr class="table-secondary">
+                                                            <th>Pregunta Opcional</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each preguntas}}
+                                                        <tr>
+                                                            <td>{{this}}</td>
+                                                            <td>
+                                                                <a onClick="preguntaOpcional_onEdit(this)">
+                                                                    ✏️
+                                                                </a>
+                                                                <a onClick="preguntaOpcional_onDelete(this)">
+                                                                    🗑️
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <label class="mt-3 mb-1">
+                            Keys de las Mascotas
+                        </label>
+                        <div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <form onsubmit="event.preventDefault();key_onFormSubmit();" autocomplete="off">
+                                                <div>
+                                                    <label class="small">
+                                                        Key:
+                                                    </label>
+                                                    <input class="small" type="text" name="key" id="key">
+                                                    <label class="small validation-error" id="key_ValidationError">
+                                                        *
+                                                    </label>
+                                                </div>
+                                                <div class="form-action-buttons">
+                                                    <input class="small" type="submit" value="Guardar">
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="table-responsive">
+                                                <table class="table small table-hover list" id="key_List">
+                                                    <thead>
+                                                        <tr class="table-secondary">
+                                                            <th>Key</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {{#each preguntasMascotas}}
+                                                        <tr class="table-secondary">
+                                                            <td>{{this}}</td>
+                                                            <td>
+                                                                <a onClick="key_onEdit(this)">
+                                                                    ✏️
+                                                                </a>
+                                                                <a onClick="key_onDelete(this)">
+                                                                    🗑️
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        {{/each}}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <form id="envioData" method="post" action="/configurarCaracteristicasAsociacion">
+                            <div class="d-grid mt-4">
+                                <input type="text" class="form-control text-end" aria-describedby="inputGroup-sizing-sm" name="key1" id="key1" style="display:none">
+                                <input type="text" class="form-control text-end" aria-describedby="inputGroup-sizing-sm" name="key2" id="key2" style="display:none">
+                                <button type="button" onclick="magia();" class="btn btn-secondary">
+                                    Verificar cambios
+                                </button>
+                                <button type="button submit" class="btn btn-success">
+                                    Actualizar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+
+        <!-- Script para agregar/eliminar preguntas opcionales -->
+        <script>
+            function magia() {
+
+                var tabla = "";
+                var table = document.getElementById("preguntaOpcional_List");
+                tabla2 = "";
+                table2 = document.getElementById("key_List");
+
+                for (var i = 1; i < table.rows.length; i++) {
+                    tabla += table.rows[i].cells[0].innerText + "&&";
+                    console.log(table.rows[i].cells[0]);
+                    //iterate through columns
+                    //columns would be accessed using the "col" variable assigned in the for loop
+
+                }
+                document.getElementById('key1').value = tabla;
+
+                for (var j = 1; j < table2.rows.length; j++) {
+                    tabla2 += table2.rows[j].cells[0].innerText + "&&";
+                    console.log(table2.rows[j].cells[0]);
+                    //iterate through columns
+                    //columns would be accessed using the "col" variable assigned in the for loop
+
+                }
+                document.getElementById('key2').value = tabla2;
+
+                console.log(tabla2);
+                $('envioData').unbind('submit').submit();
+            }
+        </script>
+
+        <script>
+            var preguntaOpcional_selectedRow = null;
+
+            function preguntaOpcional_onFormSubmit() {
+                if (preguntaOpcional_validate()) {
+                    var preguntaOpcional_formData = preguntaOpcional_readFormData();
+                    if (preguntaOpcional_selectedRow == null) preguntaOpcional_insertNewRecord(preguntaOpcional_formData);
+                    else preguntaOpcional_updateRecord(preguntaOpcional_formData);
+                    preguntaOpcional_resetForm();
+                }
+            }
+
+            function preguntaOpcional_readFormData() {
+                var preguntaOpcional_formData = {};
+                preguntaOpcional_formData["preguntaOpcional"] = document.getElementById("preguntaOpcional").value;
+                return preguntaOpcional_formData;
+            }
+
+            function preguntaOpcional_insertNewRecord(data) {
+                var preguntaOpcional_table = document
+                        .getElementById("preguntaOpcional_List")
+                        .getElementsByTagName("tbody")[0];
+                var preguntaOpcional_newRow = preguntaOpcional_table.insertRow(preguntaOpcional_table.length);
+                cell1 = preguntaOpcional_newRow.insertCell(0);
+                cell1.innerHTML = data.preguntaOpcional;
+                cell2 = preguntaOpcional_newRow.insertCell(1);
+                cell2.innerHTML = `<a onClick="preguntaOpcional_onEdit(this)">✏️</a> <a onClick="preguntaOpcional_onDelete(this)">🗑️</a>`;
+            }
+
+            function preguntaOpcional_resetForm() {
+                document.getElementById("preguntaOpcional").value = "";
+                preguntaOpcional_selectedRow = null;
+            }
+
+            function preguntaOpcional_onEdit(td) {
+                preguntaOpcional_selectedRow = td.parentElement.parentElement;
+                document.getElementById("preguntaOpcional").value = preguntaOpcional_selectedRow.cells[0].innerHTML;
+            }
+
+            function preguntaOpcional_updateRecord(preguntaOpcional_formData) {
+                preguntaOpcional_selectedRow.cells[0].innerHTML = preguntaOpcional_formData.preguntaOpcional;
+            }
+
+            function preguntaOpcional_onDelete(td) {
+                if (confirm("¿Estás seguro de que querés borrar esta pregunta opcional, maestro?")) {
+                    row = td.parentElement.parentElement;
+                    document.getElementById("preguntaOpcional_List").deleteRow(row.rowIndex);
+                    preguntaOpcional_resetForm();
+                }
+            }
+
+            function preguntaOpcional_validate() {
+                preguntaOpcional_isValid = true;
+                if (document.getElementById("preguntaOpcional").value == "") {
+                    preguntaOpcional_isValid = false;
+                    document.getElementById("preguntaOpcional_ValidationError").classList.remove("hide");
+                    confirm("Che, no estás agregando ninguna pregunta opcional...\nNo te hagas el pillo.");
+                } else {
+                    preguntaOpcional_isValid = true;
+                    if (
+                            !document
+                                    .getElementById("preguntaOpcional_ValidationError")
+                                    .classList.contains("hide")
+                    )
+                        document.getElementById("preguntaOpcional_ValidationError").classList.add("hide");
+                }
+                return preguntaOpcional_isValid;
+            }
+        </script>
+
+        <!-- Script para agregar/eliminar keys -->
+        <script>
+            var key_selectedRow = null;
+
+            function key_onFormSubmit() {
+                if (key_validate()) {
+                    var key_formData = key_readFormData();
+                    if (key_selectedRow == null) key_insertNewRecord(key_formData);
+                    else key_updateRecord(key_formData);
+                    key_resetForm();
+                }
+            }
+
+            function key_readFormData() {
+                var key_formData = {};
+                key_formData["key"] = document.getElementById("key").value;
+                return key_formData;
+            }
+
+            function key_insertNewRecord(data) {
+                var key_table = document
+                        .getElementById("key_List")
+                        .getElementsByTagName("tbody")[0];
+                var key_newRow = key_table.insertRow(key_table.length);
+                cell1 = key_newRow.insertCell(0);
+                cell1.innerHTML = data.key;
+                cell2 = key_newRow.insertCell(1);
+                cell2.innerHTML = `<a onClick="key_onEdit(this)">✏️</a> <a onClick="key_onDelete(this)">🗑️</a>`;
+            }
+
+            function key_resetForm() {
+                document.getElementById("key").value = "";
+                key_selectedRow = null;
+            }
+
+            function key_onEdit(td) {
+                key_selectedRow = td.parentElement.parentElement;
+                document.getElementById("key").value = key_selectedRow.cells[0].innerHTML;
+            }
+
+            function key_updateRecord(key_formData) {
+                key_selectedRow.cells[0].innerHTML = key_formData.key;
+            }
+
+            function key_onDelete(td) {
+                if (confirm("¿Estás seguro de que querés borrar esta key, maestro?")) {
+                    row = td.parentElement.parentElement;
+                    document.getElementById("key_List").deleteRow(row.rowIndex);
+                    key_resetForm();
+                }
+            }
+
+            function key_validate() {
+                key_isValid = true;
+                if (document.getElementById("key").value == "") {
+                    key_isValid = false;
+                    document.getElementById("key_ValidationError").classList.remove("hide");
+                    confirm("Che, no estás agregando ninguna key...\nNo te hagas el pillo.");
+                } else {
+                    key_isValid = true;
+                    if (
+                            !document
+                                    .getElementById("key_ValidationError")
+                                    .classList.contains("hide")
+                    )
+                        document.getElementById("key_ValidationError").classList.add("hide");
+                }
+                return key_isValid;
+            }
+        </script>
+
+    </body>
+
+</html>

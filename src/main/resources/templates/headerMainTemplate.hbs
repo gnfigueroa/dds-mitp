@@ -1,0 +1,70 @@
+<ul class="nav">
+    <li>
+        <a href="/" class="active HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">Principal</a>
+    </li>
+    {{#unless asociacion}}
+        <li>
+            <a href="/adopcion" class="HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">Adopciones</a>
+        </li>
+    {{/unless}}
+    <li>
+        <a href="/mascotasPerdidas" class="HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">Mascotas Perdidas</a>
+    </li>
+    {{#if persona}}
+        <li>
+            <a href="/logout" class="HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">
+                Cerrar sesión
+            </a>
+        </li>
+        <li>
+            <div class="main-white-button" >
+                <a class="main-white-button" href="/panel">
+                    {{persona.nombre}}
+                </a>
+            </div>
+        </li>
+    {{else}}
+        {{#if asociacion}}
+            <li>
+                <a href="/logout" class="HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">
+                    Cerrar sesión
+                </a>
+            </li>
+            <li>
+                <div class="main-white-button">
+                    <a href="/panel">
+                        {{asociacion.nombre}}
+                    </a>
+                </div>
+            </li>
+        {{else}}
+            {{#if usuario}}
+                <li>
+                    <a href="/logout" class="HELVETICANEUE-MEDIUM" style="color:var(--LAVENDER)">
+                        Cerrar sesión
+                    </a>
+                </li>
+                <li>
+                    <div class="main-white-button" >
+                        <a class="main-white-button" href="/panel">
+                            {{usuario.persona.nombre}}
+                        </a>
+                    </div>
+                </li>
+            {{else}}
+                <li>
+                    <div class="main-white-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a href="#">
+                            <!-- <i class="fa fa-plus"></i> -->
+                            <span class="HELVETICANEUE-MEDIUM">INGRESAR</span>
+                        </a>
+                    </div>
+                </li>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+</ul>
+
+<a class='menu-trigger'>
+    <span>Menu</span>
+</a>

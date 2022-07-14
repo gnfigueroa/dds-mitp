@@ -1,0 +1,260 @@
+@font-face {
+    font-family: "PFBeauSansPro-REGULAR";
+    src: url('../fonts/PF Beau Sans/PFBeauSansPro-Regular.otf') format('opentype');
+}
+@font-face {
+    font-family: "PFBeauSansPro-SEMIBOLD";
+    src: url('../fonts/PF Beau Sans/PFBeauSansPro-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "HelveticaNeue-REGULAR";
+    src: url('../fonts/Helvetica/Helvetica Neue/HelveticaNeue.otf') format('opentype');
+}
+@font-face {
+    font-family: "HelveticaNeue-MEDIUM";
+    src: url('../fonts/Helvetica/Helvetica Neue/HelveticaNeue-Medium.otf') format('opentype');
+}
+
+:root{
+    /* Tonalidades para el color de fondo de los botones */
+    --AZULITO_0: #3874ff;     /* Botones azules */
+    --AZULITO_1: #1a5eff;
+    --AZULITO_2: #004cff;
+    --AZULITO_3: #0045e6;
+    --ROJITO_0: #ff3874;      /* Botones rojos */
+    --ROJITO_1: #ff1a5e;
+    --ROJITO_2: #ff004c;
+    --ROJITO_3: #e60045;
+    --VIOLETITA_0: #9400D3;   /* Botones violetas */
+    --VIOLETITA_1: #7d00b3;
+    --VIOLETITA_2: #6b0099;
+    --VIOLETITA_3: #590080;
+
+    /* Tonalidades para el color del texto */
+    --NWORD: #000000;
+    --INDIGO: #4B0082;          /*índigo*/
+    --DARK_VIOLET: #9400D3;     /*violeta oscuro*/
+    --MEDIUM_PURPLE: #9370DB;   /*violeta grisáceo*/
+    --LAVENDER: #E6E6FA;        /*lavanda*/
+    --BLANCO: #FFFFFF;
+
+    --unRojo: #ff3874;
+    --unAzul: #3874ff;
+}
+
+
+/* Fuentes/Tipografías --> font-family */
+    .PFBEAUSANS-REGULAR{    font-family: "PFBeauSansPro-REGULAR";}
+    .PFBEAUSANS-SEMIBOLD{   font-family: "PFBeauSansPro-SEMIBOLD";}
+    .HELVETICANEUE-REGULAR{ font-family: "HelveticaNeue-REGULAR";}
+    .HELVETICANEUE-MEDIUM{  font-family: "HelveticaNeue-MEDIUM";}
+
+/* Colores para fondos --> background-color */
+    .FONDO-AZULITO_0{       background-color: var(--AZULITO_0);}
+    .FONDO-ROJITO_0{        background-color: var(--ROJITO_0);}
+    .FONDO-VIOLETITA_0{     background-color: var(--VIOLETITA_0);}
+    .FONDO-NWORD{           background-color: var(--NWORD);}
+    .FONDO-INDIGO{          background-color: var(--INDIGO);}
+    .FONDO-DARK_VIOLET{     background-color: var(--DARK_VIOLET);}
+    .FONDO-MEDIUM_PURPLE{   background-color: var(--MEDIUM_PURPLE);}
+    .FONDO-LAVENDER{        background-color: var(--LAVENDER);}
+    .FONDO-BLANCO{          background-color: var(--BLANCO);}
+
+/* Colores para letras --> color */
+    .LETRAS-NWORD{          color: var(--NWORD);}
+    .LETRAS-INDIGO{         color: var(--INDIGO);}
+    .LETRAS-DARK_VIOLET{    color: var(--DARK_VIOLET);}
+    .LETRAS-MEDIUM_PURPLE{  color: var(--MEDIUM_PURPLE);}
+    .LETRAS-LAVENDER{       color: var(--LAVENDER);}
+    .LETRAS-BLANCO{         color: var(--BLANCO);}
+    .LETRAS-INDIGO{         color: var(--INDIGO);}
+
+
+    /* para los botones */
+    /* Robado de Bootstrap ("btn-primary") -> se cambia a partir de #0d6efd */
+    .BTN-AZULITO {
+        color: var(--BLANCO);
+        background-color: var(--AZULITO_0);
+        border-color: var(--AZULITO_0);
+    }
+    .BTN-AZULITO:hover {
+        color: var(--BLANCO);
+        background-color: var(--AZULITO_1);
+        border-color: var(--AZULITO_2);
+    }
+    .btn-check:focus + .BTN-AZULITO, .BTN-AZULITO:focus {
+        color: var(--BLANCO);
+        background-color: var(--AZULITO_1);
+        border-color: var(--AZULITO_2);
+        box-shadow: 0 0 0 0.25rem rgba(102, 148, 255, 0.5);
+    }
+    .btn-check:checked + .BTN-AZULITO, .btn-check:active + .BTN-AZULITO, .BTN-AZULITO:active, .BTN-AZULITO.active, .show > .BTN-AZULITO.dropdown-toggle {
+        color: var(--BLANCO);
+        background-color: var(--AZULITO_2);
+        border-color: var(--AZULITO_3);
+    }
+    .btn-check:checked + .BTN-AZULITO:focus, .btn-check:active + .BTN-AZULITO:focus, .BTN-AZULITO:active:focus, .BTN-AZULITO.active:focus, .show > .BTN-AZULITO.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem rgba(102, 148, 255, 0.5);
+    }
+    .BTN-AZULITO:disabled, .BTN-AZULITO.disabled {
+        color: var(--BLANCO);
+        background-color: var(--AZULITO_0);
+        border-color: var(--AZULITO_0);
+    }
+
+    .BTN-ROJITO {
+        color: var(--BLANCO);
+        background-color: var(--ROJITO_0);
+        border-color: var(--ROJITO_0);
+    }
+    .BTN-ROJITO:hover {
+        color: var(--BLANCO);
+        background-color: var(--ROJITO_1);
+        border-color: var(--ROJITO_2);
+    }
+    .btn-check:focus + .BTN-ROJITO, .BTN-ROJITO:focus {
+        color: var(--BLANCO);
+        background-color: var(--ROJITO_1);
+        border-color: var(--ROJITO_2);
+        box-shadow: 0 0 0 0.25rem rgba(255, 128, 166, 0.5);
+    }
+    .btn-check:checked + .BTN-ROJITO, .btn-check:active + .BTN-ROJITO, .BTN-ROJITO:active, .BTN-ROJITO.active, .show > .BTN-ROJITO.dropdown-toggle {
+        color: var(--BLANCO);
+        background-color: var(--ROJITO_2);
+        border-color: var(--ROJITO_3);
+    }
+    .btn-check:checked + .BTN-ROJITO:focus, .btn-check:active + .BTN-ROJITO:focus, .BTN-ROJITO:active:focus, .BTN-ROJITO.active:focus, .show > .BTN-ROJITO.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 128, 166, 0.5);
+    }
+    .BTN-ROJITO:disabled, .BTN-ROJITO.disabled {
+        color: var(--BLANCO);
+        background-color: var(--ROJITO_0);
+        border-color: var(--ROJITO_0);
+    }
+
+    .BTN-VIOLETITA {
+        color: var(--BLANCO);
+        background-color: var(--VIOLETITA_0);
+        border-color: var(--VIOLETITA_0);
+    }
+    .BTN-VIOLETITA:hover {
+        color: var(--BLANCO);
+        background-color: var(--VIOLETITA_1);
+        border-color: var(--VIOLETITA_2);
+    }
+    .btn-check:focus + .BTN-VIOLETITA, .BTN-VIOLETITA:focus {
+        color: var(--BLANCO);
+        background-color: var(--VIOLETITA_1);
+        border-color: var(--VIOLETITA_2);
+        box-shadow: 0 0 0 0.25rem rgba(179, 0, 255, 0.5);
+    }
+    .btn-check:checked + .BTN-VIOLETITA, .btn-check:active + .BTN-VIOLETITA, .BTN-VIOLETITA:active, .BTN-VIOLETITA.active, .show > .BTN-VIOLETITA.dropdown-toggle {
+        color: var(--BLANCO);
+        background-color: var(--VIOLETITA_2);
+        border-color: var(--VIOLETITA_3);
+    }
+    .btn-check:checked + .BTN-VIOLETITA:focus, .btn-check:active + .BTN-VIOLETITA:focus, .BTN-VIOLETITA:active:focus, .BTN-VIOLETITA.active:focus, .show > .BTN-VIOLETITA.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.25rem rgba(179, 0, 255, 0.5);
+    }
+    .BTN-VIOLETITA:disabled, .BTN-VIOLETITA.disabled {
+        color: var(--BLANCO);
+        background-color: var(--VIOLETITA_0);
+        border-color: var(--VIOLETITA_0);
+    }
+
+
+
+.LBL{
+    font-family: "HelveticaNeue-MEDIUM";
+    color: var(--DARK_VIOLET);
+}
+
+.TXTBOX{
+    font-family: "HelveticaNeue-REGULAR";
+    color: var(--INDIGO);
+}
+
+
+
+.TXT-IZQ{   text-align: left; }
+.TXT-CEN{   text-align: center; }
+.TXT-DER{   text-align: right; }
+
+
+
+.TABLA {
+    --bs-table-bg: #e2e3e5;
+    --bs-table-striped-bg: var(--MEDIUM_PURPLE);
+    --bs-table-striped-color: var(--INDIGO);
+    --bs-table-active-bg: var(--LAVENDER);
+    --bs-table-active-color: var(--INDIGO);
+    --bs-table-hover-bg: var(--MEDIUM_PURPLE);
+    --bs-table-hover-color: var(--INDIGO);
+    color: var(--INDIGO);
+    border-color: var(--LAVENDER);
+    font-family: "HelveticaNeue-REGULAR";
+}
+
+
+
+
+
+
+
+
+
+
+
+head{
+    /*
+    background-color: #812bd8;
+    color: #e6e1f2;
+    */
+    background-color: var(--DARK_VIOLET);
+    color: var(--LAVENDER);
+}
+
+body{
+    /*
+    background-color: #e6e1f2;
+    color: #812bd8;
+     */
+    background-color: var(--LAVENDER);
+    color: var(--DARK_VIOLET);
+}
+
+div{
+
+}
+
+button{
+    font-family: "HelveticaNeue-REGULAR";
+}
+
+a{
+    font-family: "HelveticaNeue-REGULAR";
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "PFBeauSansPro-REGULAR";
+    /* color: var(--DARK_VIOLET);*/
+    text-shadow: 0px 0px 25px #808080;
+}
+
+h3{
+    text-shadow: 0px 0px 25px #808080;
+}
+
+p{
+    font-family: "HelveticaNeue-REGULAR";
+    color: var(--INDIGO);
+}
+
+label{
+    font-family: "PFBeauSansPro-REGULAR";
+    color: var(--DARK_VIOLET);
+}
+
+
+

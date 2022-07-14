@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>No Tengo Alma</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown animated background-header" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner2">
+            {{>ingresoModal.hbs}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 40px; margin-bottom: 50px;">
+            <div class="row justify-content-start">
+                {{#each mascotas}}
+                    <div class="col-4" style="margin-top: 30px;">
+                        <div class="card" style="width: 20rem;">
+                            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    {{#each pathFoto}}
+                                    {{#if @first}}
+                                        <div class="carousel-item active">
+
+                                            <img src="data:image/png;base64,{{this}}" class="d-block w-100" alt="...">
+                                        </div>
+                                    {{else}}
+                                        <div class="carousel-item">
+                                            <img src="data:image/png;base64,{{this}}" class="d-block w-100" alt="...">
+                                        </div>
+                                    {{/if}}
+                                    {{/each}}
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title PFBEAUSANS-SEMIBOLD LETRAS-MEDIUM_PURPLE">
+                                    {{nombre}} ({{apodo}})
+                                </h5>
+                                <p class="card-text HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                    {{descripcion}}
+                                </p>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                    Tipo de Mascota: {{tipo}}
+                                </li>
+                                <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                    Sexo: {{sexo}}
+                                </li>
+                                <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                    Fecha de Nacimiento: {{fechaNacimiento}}
+                                </li>
+                            </ul>
+
+                            <div class="card-body">
+                                <h5 class="card-title HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET" style="font-size: 16px">
+                                    Características
+                                </h5>
+                                {{#each this.caracteristica}}
+                                    <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                        {{@key}}: {{this}}
+                                    </li>
+                                {{/each}}
+                            </div>
+
+                            <div class="card-body d-grid gap-2">
+                                <button type="button" class="btn btn-primary BTN-AZULITO" data-bs-toggle="modal" data-bs-target="#exampleModalFotoMascota{{idMascota}}">
+                                    Agregar Foto
+                                </button>
+                                <button type="button" class="btn btn-primary BTN-VIOLETITA" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{idMascota}}">
+                                    Editar Mascota
+                                </button>
+                                <a href="/panelAdopcion/{{idMascota}}" class="btn btn-danger BTN-ROJITO" style="text-align: center;" >
+                                    Poner en Adopción
+                                </a>
+                                <a href="/perfilMascota/{{idMascota}}" class="btn btn-danger BTN-ROJITO" style="text-align: center;" >
+                                                                    Perfil Mascota
+                                                                </a>
+                                {{#if this.estaPerdida}}
+                                    <a href="/noTengoAlma/{{idMascota}}" class="btn btn-danger BTN-AZULITO" style="text-align: center;" >
+                                        Encontré a mi mascota
+                                    </a>
+                                    {{else}}
+                                    <a href="/noTengoAlma/{{idMascota}}" class="btn btn-danger BTN-ROJITO" style="text-align: center;" >
+                                        Perdí a mi mascota
+                                    </a>
+                                {{/if}}
+                            </div>
+
+                            <!-- Modal Agregar Foto -->
+                            <div class="modal fade" id="exampleModalFotoMascota{{idMascota}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalFotoMascotaLabel{{idMascota}}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content FONDO-LAVENDER">
+                                        <form method="post" action="/agregarFoto/{{idMascota}}" enctype='multipart/form-data'>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title LETRAS-DARK_VIOLET PFBEAUSANS-SEMIBOLD" id="exampleModalLabel">
+                                                    Agregar Foto
+                                                </h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-row">
+                                                    <div class="form-group">
+                                                        <label for="foto">
+                                                            Selección de Foto:
+                                                        </label>
+                                                        <input type="file" class="form-control-file" id="foto" name="foto" multiple/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger BTN-ROJITO" data-bs-dismiss="modal">
+                                                    Cerrar
+                                                </button>
+                                                <button type="submit" class="btn btn-primary BTN-AZULITO" id="liveAlertBtn">
+                                                    Agregar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Modal Editar Mascota -->
+                            <div class="modal fade" id="staticBackdrop{{idMascota}}" data-backdrop="static" tabindex="-1" role="dialog"
+                                 aria-labelledby="staticBackdropLabel{{idMascota}}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content FONDO-LAVENDER">
+                                        <form method="post" action="/actualizarMascota" enctype='multipart/form-data'>
+                                            <div class="modal-header">
+                                                <h4 class="modal-title LETRAS-DARK_VIOLET PFBEAUSANS-SEMIBOLD" id="exampleModalLabel">
+                                                    Edición de Mascota
+                                                </h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-row">
+                                                    <div class="form-group">
+                                                        <label for="tipo" class="LBL">
+                                                            Tipo
+                                                        </label>
+                                                        <select class="form-select TXTBOX" aria-label="Default select example" id="tipo" name="tipo" placeholder="Tipo Mascota">
+                                                            {{#each tiposMascota}}
+                                                                <option value="{{this}}">{{this}}</option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label for="nombre" class="LBL mt-2">
+                                                            Nombre
+                                                        </label>
+                                                        {{#if this.nombre}}
+                                                            <input type="text" class="form-control TXTBOX" value="{{this.nombre}}" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                                        {{else}}
+                                                        <input class="form-control TXTBOX" id="nombre" name="nombre" placeholder="Ingrese nombre" required>
+                                                        {{/if}}
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label for="nombre" class="LBL mt-2">
+                                                            Apodo
+                                                        </label>
+                                                            {{#if this.apodo}}
+                                                                <input class="form-control TXTBOX" value="{{this.apodo}}" id="apodo" name="apodo" placeholder="Ingrese apodo" required>
+                                                            {{else}}
+                                                                <input class="form-control TXTBOX" id="apodo" name="apodo" placeholder="Ingrese apodo" required>
+                                                            {{/if}}
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label for="sexo" class="LBL mt-2">
+                                                            Sexo
+                                                        </label>
+                                                        <select class="form-select TXTBOX" aria-label="Default select example" id="sexo" name="sexo" placeholder="Sexo">
+                                                            {{#each sexos}}
+                                                                <option value="{{this}}">
+                                                                    {{this}}
+                                                                </option>
+                                                            {{/each}}
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label for="fecha" class="LBL mt-2">
+                                                            Fecha de Nacimiento
+                                                        </label>
+                                                            {{#if this.fechaNacimiento}}
+                                                                <input type="date" class="form-control TXTBOX" value="{{this.fechaNacimiento}}" id="fecha" name="fecha" max='2000-13-13' placeholder="yyyy-mm-dd" required>
+                                                        {{else}}
+                                                            <input type="date" class="form-control TXTBOX" id="fecha" name="fecha" max='2000-13-13' placeholder="yyyy-mm-dd" required>
+                                                        {{/if}}
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="desc" class="LBL mt-2">
+                                                            Descripción
+                                                        </label>
+                                                        <textarea class="form-control TXTBOX" value="{{this.descripcion}}" id="desc" name="desc" rows="10" required>{{this.descripcion}}</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger BTN-ROJITO" data-bs-dismiss="modal">
+                                                    Cerrar
+                                                </button>
+                                                <button type="submit" class="btn btn-primary BTN-AZULITO" id="liveAlertBtn">
+                                                    Guardar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- FIN Modal Editar Mascota -->
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+
+    </body>
+
+</html>

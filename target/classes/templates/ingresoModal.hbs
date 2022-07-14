@@ -1,0 +1,42 @@
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content FONDO-LAVENDER">
+            <div class="modal-header">
+                <h4 class="LETRAS-DARK_VIOLET PFBEAUSANS-SEMIBOLD" id="exampleModalLabel">
+                    <span class="PFBEAUSANS-REGULAR" style="font-size: 0.95rem">ESPERÁ UN MOMENTO, AMIGO.</span>
+                    <br>
+                    Primero necesitás acceder:
+                </h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <form method="post" action="/login">
+                    <div class="modal-body">
+                        <div class="mb-3 form-group">
+                            <label for="usuario" class="form-label LBL">
+                                Usuario
+                            </label>
+                            <input type="text" class="form-control TXTBOX" name="usuario" id="usuario" required/>
+                            <div id="emailHelp" class="form-text"></div>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="password" class="form-label LBL">
+                                Password
+                            </label>
+                            <input type="password" class="form-control TXTBOX" name= "password" id="password" required/>
+                        </div>
+                        <button class="btn btn-primary BTN-AZULITO" role="button" type="submit" aria-disabled="true">
+                            Ingresar
+                        </button>
+                        <button class="btn btn-danger BTN-ROJITO" data-bs-dismiss="modal">
+                            Cerrar
+                        </button>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/crearCuenta" class="btn btn-success BTN-VIOLETITA" role="button" type="submit" aria-disabled="true">
+                            Crear Cuenta
+                        </a>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

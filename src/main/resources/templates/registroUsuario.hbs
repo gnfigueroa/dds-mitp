@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Registro de Usuario</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown animated background-header" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner2">
+            {{>ingresoModal.hbs}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-6">
+                    <form method="post" action="/crearCuenta">
+                        <h3 class="LETRAS-DARK_VIOLET PFBEAUSANS-SEMIBOLD mt-5 mb-3 TXT-CEN" id="exampleModalLabel">
+                            Registro de Usuario
+                        </h3>
+
+                        <div class="form-group mb-3">
+                            <label for="usuario" class="LBL">
+                                Id de Usuario
+                            </label>
+                            <input type="text" class="form-control TXTBOX" id="usuario" name="usuario" placeholder="Ingrese Id de Usuario" required>
+                            {{#if usuarioDuplicado}}
+                                <p class="fst-italic" style="color: red">
+                                    Usuario ya existente. Ingrese uno nuevo por favor.
+                                </p>
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="password" class="LBL">
+                                Contraseña
+                            </label>
+                            <input type="password" class="form-control TXTBOX" id="password" name="password" placeholder="Ingrese su Contraseña" required>
+                            {{#if passwordDebil}}
+                                <p class="fst-italic" style="color: red">
+                                    La contraseña debe tener una longitud entre 8 y 16 caracteres y, además, tener al menos: 1 mayúscula, 1 minúscula, 1 símbolo y 1 número.
+                                </p>
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="asociacion" class="LBL">
+                                Asociacion
+                            </label>
+                            <select class="form-select TXTBOX" aria-label="Default select example" id="asociacion" name="asociacion" placeholder="Elegir Asociacion">
+                                {{#each clavesAsociacion}}
+                                    <option value="{{this.idAsociacion}}">{{this.idAsociacion}}-{{this.nombre}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="nombre" class="LBL">
+                                Nombre
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="text" class="form-control TXTBOX" value="{{nombreDuplicado}}" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="text" class="form-control TXTBOX" value="{{nombreDuplicado}}" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                {{else}}
+                                    <input type="text" class="form-control TXTBOX" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="apellido" class="LBL">
+                                Apellido
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="text" class="form-control TXTBOX" id="apellido" name="apellido" value="{{apellidoDuplicado}}" placeholder="Ingrese su Apellido" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="text" class="form-control TXTBOX" id="apellido" name="apellido" value="{{apellidoDuplicado}}" placeholder="Ingrese su Apellido" required>
+                                {{else}}
+                                    <input type="text" class="form-control TXTBOX" id="apellido" name="apellido" placeholder="Ingrese su Apellido" required>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="documento" class="LBL">
+                                Documento
+                            </label>
+                            <select class="form-select TXTBOX" aria-label="Default select example" id="tipoDoc" name="tipoDoc" placeholder="Documentos">
+                                {{#each tipoDoc}}
+                                    <option value="{{this}}">{{this}}</option>
+                                {{/each}}
+                            </select>
+                            {{#if usuarioDuplicado}}
+                                <input type="number" class="form-control TXTBOX" id="documento" name="documento" value="{{documentoDuplicado}}" placeholder="Ingrese su Documento" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="number" class="form-control TXTBOX" id="documento" name="documento" value="{{documentoDuplicado}}" placeholder="Ingrese su Documento" required>
+                                {{else}}
+                                    <input type="number" class="form-control TXTBOX" id="documento" name="documento" placeholder="Ingrese su Documento" required>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="fecha" class="LBL">
+                                Fecha de Nacimiento
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="date" class="form-control TXTBOX" id="fecha" name="fecha" value="{{fechaDuplicado}}" placeholder="yyyy-mm-dd" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="date" class="form-control TXTBOX" id="fecha" name="fecha" value="{{fechaDuplicado}}" placeholder="yyyy-mm-dd" required>
+                                {{else}}
+                                    <input type="date" class="form-control TXTBOX" id="fecha" name="fecha" placeholder="yyyy-mm-dd" required>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="telefono" class="LBL">
+                                Teléfono
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="text" class="form-control TXTBOX" id="telefono" name="telefono" value="{{telefonoDuplicado}}" placeholder="Número de Teléfono" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="text" class="form-control TXTBOX" id="telefono" name="telefono" value="{{telefonoDuplicado}}" placeholder="Número de Teléfono" required>
+                                {{else}}
+                                    <input type="text" class="form-control TXTBOX" id="telefono" name="telefono" placeholder="Número de Teléfono" required>
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="direccion" class="LBL">
+                                Dirección
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="text" class="form-control TXTBOX" id="direccion" name="direccion" value="{{direccionDuplicado}}" placeholder="Ingrese su Dirección" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="text" class="form-control TXTBOX" id="direccion" name="direccion" placeholder="Ingrese su Dirección" required>
+                                {{else}}
+                                    <input type="text" class="form-control TXTBOX" id="direccion" name="direccion" placeholder="Ingrese su Dirección">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="email" class="LBL">
+                                Mail
+                            </label>
+                            {{#if usuarioDuplicado}}
+                                <input type="email" class="form-control TXTBOX" id="email" name="email" value="{{emailDuplicado}}" placeholder="Ingrese su E-Mail" required>
+                            {{else}}
+                                {{#if passwordDebil}}
+                                    <input type="email" class="form-control TXTBOX" id="email" name="email" value="{{emailDuplicado}}" placeholder="Ingrese su E-Mail" required>
+                                {{else}}
+                                    <input type="email" class="form-control TXTBOX" id="email" name="email" placeholder="Ingrese su E-Mail">
+                                {{/if}}
+                            {{/if}}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="tipoNotificacion" class="LBL">
+                                Tipo de Notificación
+                            </label>
+                            <div class="form-check">
+                                <input class="form-check-input TXTBOX" type="checkbox" value="" id="formaEmail" name="formaEmail">
+                                <label class="form-check-label TXTBOX" for="flexCheckDefault">
+                                    E-Mail
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input TXTBOX" type="checkbox" value="" id="formaWhatsapp" name="formaWhatsapp">
+                                <label class="form-check-label TXTBOX" for="flexCheckDefault">
+                                    WhatsApp
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input TXTBOX" type="checkbox" value="" id="formaSMS" name="formaSMS">
+                                <label class="form-check-label TXTBOX" for="flexCheckDefault">
+                                    SMS
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-primary BTN-VIOLETITA" role="button" type="submit" aria-disabled="true">
+                            Registrarme
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+<!--
+        <div class="card ">
+            <div class="card-header text-center">
+                REGISTRO DE USUARIO
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-6">
+                            <form method="post" action="/crearCuenta">
+                                <div class="form-row">
+                                    <div class="form-group ">
+                                        <label for="usuario">
+                                            Id de Usuario
+                                        </label>
+                                        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Ingrese Id de Usuario" required>
+                                        {{#if usuarioDuplicado}}
+                                            <p class="fst-italic" style="color: red">
+                                                Usuario ya existente, ingresar uno nuevo.
+                                            </p>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="password">
+                                            Contraseña
+                                        </label>
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su Contraseña" required>
+                                        {{#if passwordDebil}}
+                                            <p class="fst-italic" style="color: red">
+                                                La contraseña debe tener una longitud entre 8 y 16 caracteres y, además, tener al menos: 1 mayúscula, 1 minúscula, 1 símbolo y 1 número.
+                                            </p>
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="asociacion">
+                                            Asociacion
+                                        </label>
+                                        <select class="form-select" aria-label="Default select example" id="asociacion" name="asociacion" placeholder="Elegir Asociacion">
+                                            {{#each clavesAsociacion}}
+                                                <option value="{{this.idAsociacion}}">{{this.idAsociacion}}-{{this.nombre}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="nombre">
+                                            Nombre
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="text" class="form-control" value="{{nombreDuplicado}}" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="text" class="form-control" value="{{nombreDuplicado}}" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                            {{else}}
+                                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su Nombre" required>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="apellido">
+                                            Apellido
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="text" class="form-control" id="apellido" name="apellido" value="{{apellidoDuplicado}}" placeholder="Ingrese su Apellido" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="text" class="form-control" id="apellido" name="apellido" value="{{apellidoDuplicado}}" placeholder="Ingrese su Apellido" required>
+                                            {{else}}
+                                                <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Ingrese su Apellido" required>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="documento">
+                                            Documento
+                                        </label>
+                                        <select class="form-select" aria-label="Default select example" id="tipoDoc" name="tipoDoc" placeholder="Documentos">
+                                            {{#each tipoDoc}}
+                                                <option value="{{this}}">{{this}}</option>
+                                            {{/each}}
+                                        </select>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="number" class="form-control" id="documento" name="documento" value="{{documentoDuplicado}}" placeholder="Ingrese su Documento" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="number" class="form-control" id="documento" name="documento" value="{{documentoDuplicado}}" placeholder="Ingrese su Documento" required>
+                                            {{else}}
+                                                <input type="number" class="form-control" id="documento" name="documento" placeholder="Ingrese su Documento" required>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="fecha">
+                                            Fecha de Nacimiento
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="date" class="form-control" id="fecha" name="fecha" value="{{fechaDuplicado}}" placeholder="yyyy-mm-dd" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="date" class="form-control" id="fecha" name="fecha" value="{{fechaDuplicado}}" placeholder="yyyy-mm-dd" required>
+                                            {{else}}
+                                                <input type="date" class="form-control" id="fecha" name="fecha" placeholder="yyyy-mm-dd" required>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="telefono">
+                                            Telefono
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="text" class="form-control" id="telefono" name="telefono" value="{{telefonoDuplicado}}" placeholder="Numero de Telefono" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="text" class="form-control" id="telefono" name="telefono" value="{{telefonoDuplicado}}" placeholder="Numero de Telefono" required>
+                                            {{else}}
+                                                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Numero de Telefono" required>
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="direccion">
+                                            Direccion
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="text" class="form-control" id="direccion" name="direccion" value="{{direccionDuplicado}}" placeholder="Ingrese su Direccion" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su Direccion" required>
+                                            {{else}}
+                                                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingrese su Direccion">
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="email">
+                                            Mail
+                                        </label>
+                                        {{#if usuarioDuplicado}}
+                                            <input type="email" class="form-control" id="email" name="email" value="{{emailDuplicado}}" placeholder="Ingrese su Email" required>
+                                        {{else}}
+                                            {{#if passwordDebil}}
+                                                <input type="email" class="form-control" id="email" name="email" value="{{emailDuplicado}}" placeholder="Ingrese su Email" required>
+                                            {{else}}
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su Email">
+                                            {{/if}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tipoNotificacion">
+                                        Tipo Notificacion
+                                    </label>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="formaEmail" name="formaEmail">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            E-Mail
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="formaWhatsapp" name="formaWhatsapp">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            WhatsApp
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="formaSMS" name="formaSMS">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            SMS
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-primary BTN-VIOLETITA" role="button" type="submit" aria-disabled="true">
+                                        Registrarme
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+-->
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+
+    </body>
+
+</html>

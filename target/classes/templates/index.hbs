@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Rescate de Patitas</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body onpageshow="loginError();faltaLogin();">
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner">
+            <!-- Modal -->
+            {{>ingresoModal.hbs}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                            <h5 class="LETRAS-LAVENDER mb-3">ADOPTÁ CERCA DE TU ZONA</h5>
+                            <h1 class="PFBEAUSANS-SEMIBOLD LETRAS-LAVENDER mb-4">Encontrá a tu futuro mejor amigo!</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <form id="search-form" name="gs" method="submit" role="search" action="#">
+                            <div class="row">
+                                <div class="col-lg-3 align-self-center">
+                                    <fieldset>
+                                        <select name="area" class="form-select PFBEAUSANS-REGULAR" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
+                                            <option class="LETRAS-INDIGO" selected>Zona</option>
+                                            <option class="LETRAS-INDIGO" value="Villa Urquiza">Villa Urquiza</option>
+                                            <option class="LETRAS-INDIGO" value="Flores">Flores</option>
+                                            <option class="LETRAS-INDIGO" value="Palermo">Palermo</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-3 align-self-center">
+                                    <fieldset>
+                                        <select name="area" class="form-select PFBEAUSANS-REGULAR LETRAS-DARK_VIOLET" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
+                                            <option class="LETRAS-INDIGO" selected>Tipo De Animal</option>
+                                            <option class="LETRAS-INDIGO" value="Villa Urquiza">Perro</option>
+                                            <option class="LETRAS-INDIGO" value="Flores">Gato</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-3 align-self-center">
+                                    <fieldset>
+                                        <select name="price" class="form-select PFBEAUSANS-REGULAR LETRAS-DARK_VIOLET" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                                            <option class="LETRAS-INDIGO" selected>Tamaño de animal</option>
+                                            <option class="LETRAS-INDIGO" value="1">Chico</option>
+                                            <option class="LETRAS-INDIGO" value="2">Mediano</option>
+                                            <option class="LETRAS-INDIGO" value="3">Gramde</option>
+                                        </select>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-3">
+                                    <fieldset>
+                                        <button class="main-button PFBEAUSANS-SEMIBOLD LETRAS-LAVENDER" style="font-size: 120%">
+                                            <i class="fa fa-search"></i>
+                                            Buscar
+                                        </button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-10 offset-lg-1">
+                        <ul class="categories">
+                            <li>
+                                <a href="#">
+                                    <span class="icon">
+                                        <img src="images/dog.png" alt="Home">
+                                    </span>
+                                    <span class="HELVETICANEUE-MEDIUM LETRAS-LAVENDER" style="font-size: 110%">
+                                        PERROS
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="HELVETICANEUE-MEDIUM LETRAS-MEDIUM_PURPLE" href="#">
+                                    <span class="icon">
+                                        <img src="images/cat.png" alt="Vehicle">
+                                    </span>
+                                    <span class="HELVETICANEUE-MEDIUM LETRAS-LAVENDER" style="font-size: 110%">
+                                        GATOS
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="HELVETICANEUE-MEDIUM LETRAS-MEDIUM_PURPLE" href="#">
+                                    <span class="icon">
+                                        <img src="images/perroygato.png" alt="Travel">
+                                    </span>
+                                    <span class="HELVETICANEUE-MEDIUM LETRAS-LAVENDER" style="font-size: 110%">
+                                        AMBOS
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-lg-12 text-center">
+                    <h1 class="mt-5 mb-4 PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET">
+                        ¿Encontraste un amiguito perdido?
+                    </h1>
+                    <h4 style="mt-3 mb-2 PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET">
+                        Indicanos si tiene chapita por favor:
+                    </h4>
+                    <div style="margin-top: 20px;">
+                        <a href="/encontreMascotaConChapita" class="btn btn-success BTN-AZULITO" role="button" aria-disabled="true" style="margin-right: 10px;">
+                            TIENE CHAPITA
+                        </a>
+                        <a href="/encontreMascotaSinChapita" class="btn btn-danger BTN-ROJITO" role="button" aria-disabled="true">
+                            NO TIENE CHAPITA
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorLoginDiv" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" style="padding-right: 17px; display: none;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content FONDO-ROJITO_0">
+                    <div class="modal-header">
+                        <h6 class="modal-title PFBEAUSANS-SEMIBOLD LETRAS-BLANCO" id="mySmallModalLabel" style="line-height: 1.25">
+                            CREDENCIALES INCORRECTAS
+                        </h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="cerrarPopup()"></button>
+                    </div>
+                    <div class="modal-body LETRAS-BLANCO">
+                        <h3>
+                            Intentá nuevamente, por favor.
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+        <script>
+            function loginError(){
+                if (location.hash === "#loginError") {
+                    var x = document.getElementById("errorLoginDiv");
+                    if (x.style.display === "none") {
+                        x.style.display = "block";
+                    } else {
+                        x.style.display = "none";
+                    }
+                }
+            }
+            function faltaLogin(){
+                if (location.hash === "#faltaLogin") {
+                    $("#exampleModal").modal('show')
+                }
+            }
+            function cerrarPopup() {
+                window.location = "/login";
+            }
+        </script>
+
+    </body>
+
+</html>

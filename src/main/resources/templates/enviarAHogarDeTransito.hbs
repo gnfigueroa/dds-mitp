@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Rescate de Patitas · Ver Contacto</title>
+        <!-- Bootstrap core CSS -->
+        <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown animated background-header" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner2">
+            {{>ingresoModal.hbs}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top: 40px; margin-bottom: 50px;">
+            <div class="row justify-content-start">
+                {{#each hogares}}
+                <div class="col-4" style="margin-top: 30px;">
+                    <div class="card">
+
+                        <div class="card-body">
+                            <h5 class="card-title PFBEAUSANS-SEMIBOLD LETRAS-MEDIUM_PURPLE">
+                                {{this.nombre}}
+                            </h5>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                Dirección: {{this.direccion}}
+                            </li>
+                            <li class="list-group-item HELVETICANEUE-REGULAR LETRAS-DARK_VIOLET">
+                                Capacidad Total: {{this.capacidad}}
+                                <br>
+                                Capacidad Disponible: {{this.lugares_disponibles}}
+                                <br>
+                                {{#if this.patio}}
+                                    Tiene Patio
+                                {{/if}}
+                                <br>
+                            </li>
+                            <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{this.latitud}},{{this.longitud}}&hl=es&z=14&amp;output=embed">
+                            </iframe>
+                            <br/>
+                        </ul>
+
+                        <button type="submit" class="btn btn-primary BTN-VIOLETITA" id="enviarHogar">
+                            Enviar Mascota aquí
+                        </button>
+
+
+                        <ul class="list-group list-group-flush"><!--
+                            <li class="list-group-item">Nombre: </li>
+                            <li class="list-group-item">Apellido: </li>
+                            <li class="list-group-item">Email: </li>
+                            <li class="list-group-item">Telefono: </li>-->
+                        </ul>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+
+    </body>
+
+</html>

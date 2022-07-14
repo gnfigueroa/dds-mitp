@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <title>Encontré Mascota CON Chapita</title>
+        <!-- Bootstrap core CSS -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="/css/fontawesome.css">
+        <link rel="stylesheet" href="/css/templatemo-plot-listing.css">
+        <link rel="stylesheet" href="/css/animated.css">
+        <link rel="stylesheet" href="/css/owl.css">
+        <!--    TemplateMo 564 Plot Listing    https://templatemo.com/tm-564-plot-listing-->
+        <link rel="stylesheet" href="/css/nuestros.css">
+    </head>
+
+    <body>
+        <!-- ***** Preloader Start ***** -->
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot"></span>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Preloader End ***** -->
+
+        <!-- ***** Header Area Start ***** -->
+        <header class="header-area header-sticky wow slideInDown animated background-header" data-wow-duration="0.75s" data-wow-delay="0s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo" style="width: 70px;">
+                                <img src="images/perroygato.png" style="width: 60px; height: 60px;">
+                            </a>
+
+                            <!-- ***** Logo End ***** -->
+                            <a href="/">
+                                <span class="PFBEAUSANS-SEMIBOLD" style="font-size: 36px; color: var(--LAVENDER); vertical-align: bottom;">GESOC</span>
+                            </a>
+
+                            <!-- ***** Menu Start ***** -->
+                            {{>headerMainTemplate.hbs}}
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ***** Header Area End ***** -->
+
+        <div class="main-banner2">
+            {{>ingresoModal.hbs}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="top-text header-text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <form method="post" action="/crearPublicacionMascotaPerdidaConChapita" enctype='multipart/form-data'>
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-12 text-center">
+                        <h3 class="mt-5 mb-4 PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET TXT-CEN">
+                            Encontraste una Mascota CON Chapita...
+                        </h3>
+                        <h5 class="mt-2 mb-2 PFBEAUSANS-SEMIBOLD LETRAS-DARK_VIOLET TXT-IZQ">
+                            Necesitamos algunos datos de la mascota...
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="mt-3 mb-1 LBL">
+                        Escaneá el código QR que aparecen en la chapita:
+                    </label>
+                    <video id="preview" width="100%"></video>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text TXTBOX" id="inputGroup-sizing-sm">ID Mascota</span>
+                        <input type="text" name="idMascotaEncontrada" id="idMascotaEncontrada" class="form-control TXTBOX" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required readonly>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="mt-3 mb-1 LBL">
+                        Ubicación
+                    </label>
+                    <div class="col">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text TXTBOX" id="inputGroup-sizing-default">Latitud</span>
+                            <input id="lat" name="lat" class="input-group-text form-control TXTBOX" id="inputGroup-sizing-default" readonly>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text TXTBOX" id="inputGroup-sizing-default">Longitud</span>
+                            <input id="long" name="long" class="input-group-text form-control TXTBOX" id="inputGroup-sizing-default" readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-3 mb-1">
+                    <label for="formFileMultiple" class="form-label mt-3 mb-1 LBL">
+                        Fotos
+                    </label>
+                    <input type="file" class="form-control-file TXTBOX" id="foto" name="foto" multiple/>
+                </div>
+
+                <label class="mt-3 mb-1 LBL">
+                    Descripción
+                </label>
+                <div class="input-group input-group-sm">
+                    <textarea id="descripcion" name="descripcion" class="form-control TXTBOX" aria-label="With textarea"></textarea>
+                </div>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="button submit" class="btn btn-secondary BTN-VIOLETITA">
+                        Enviar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            {{>footerMainTemplate.hbs}}
+        </footer>
+
+        <!-- Scripts -->
+        <script src="/jquery/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/js/owl-carousel.js"></script>
+        <script src="/js/animation.js"></script>
+        <script src="/js/imagesloaded.js"></script>
+        <script src="/js/custom.js"></script>
+
+        <!-- Script para obtener la geolocalización-->
+        <script>
+            var text_lat = document.getElementById("lat");
+            var text_long = document.getElementById("long");
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                text_lat.innerHTML = "Geolocalización no soportada en este explorador.";
+                text_long.innerHTML = "Geolocalización no soportada en este explorador.";
+            }
+
+            function showPosition(position) {
+                document.getElementById("lat").value =  position.coords.latitude;
+                document.getElementById("long").value= position.coords.longitude;
+            }
+
+            function showError(error) {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        text_lat.innerHTML = "El usuario denegó la solicitud de geolocalización."
+                        text_long.innerHTML = "El usuario denegó la solicitud de geolocalización.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        text_lat.innerHTML = "Información de localización no disponible."
+                        text_long.innerHTML = "Información de localización no disponible.";
+                        break;
+                    case error.TIMEOUT:
+                        text_lat.innerHTML = "Finalizó el tiempo para obtener la localización del usuario."
+                        text_long.innerHTML = "Finalizó el tiempo para obtener la localización del usuario.";
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        text_lat.innerHTML = "Error desconocido."
+                        text_long.innerHTML = "Error desconocido.";
+                        break;
+                }
+            }
+        </script>
+
+        <!-- Para escanear QR con la cámara -->
+        <script type="text/javascript"
+                src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+
+        <!-- Script para escanear QR con la cámara -->
+        <script>
+            let scanner = new Instascan.Scanner({
+                video: document.getElementById('preview')
+            });
+            Instascan.Camera.getCameras().then(function (cameras) {
+                if (cameras.length > 0) {
+                    scanner.start(cameras[0]);
+                } else {
+                    alert('No cameras found');
+                }
+
+            }).catch(function (e) {
+                console.error(e);
+            });
+            scanner.addListener('scan', function (c) {
+                document.getElementById('idMascotaEncontrada').value = c;
+            });
+        </script>
+
+    </body>
+
+</html>
